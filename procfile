@@ -1,0 +1,2 @@
+web: source /opt/src/bin/activate && python manage.py runserver
+ 
