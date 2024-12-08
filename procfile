@@ -1,2 +1,2 @@
-web: source /opt/src/bin/activate && python manage.py runserver
- 
+web: source /opt/src/bin/activate
+web: gunicorn django_production.wsgi:application
