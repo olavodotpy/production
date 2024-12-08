@@ -1,0 +1,5 @@
+src/
+.tool-versions
+*.sqlite3
+__pycache__/
+/staticfiles
