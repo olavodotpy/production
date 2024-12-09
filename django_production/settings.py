@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-g3ijk#83rsqqp4z_(7y+#*zq2fg9+)*d)-=ys$1i3kjva0@5rb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'production-production-8490.up.railway.app',
@@ -136,8 +136,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Session
-SESSION_ENGINE = "django.contrib.sessions.backends.db"
 
-SESSION_COOKIE_HTTPONLY = False
+# SESSION_ENGINE = "django.contrib.sessions.backends.db"
 
-SESSION_COOKIE_SAMESITE = 'Lax'
+# SESSION_COOKIE_HTTPONLY = False
+
+# SESSION_COOKIE_SAMESITE = 'Lax'
