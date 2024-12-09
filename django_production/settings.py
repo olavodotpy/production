@@ -140,4 +140,4 @@ SESSION_ENGINE = "django.contrib.sessions.backends.db"
 
 SESSION_COOKIE_HTTPONLY = False
 
-SESSION_COOKIE_SAMESITE = False
+SESSION_COOKIE_SAMESITE = 'Lax'
