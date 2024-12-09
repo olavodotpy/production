@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello, world</h1>
+    <div>
+        <img src="{% static 'home/image/github_image.png' %}" alt="IMAGE_GITHUB" width="400" height="150">
+    </div>
+
+    <p>{{ message }}</p>
 </body>
 </html>
