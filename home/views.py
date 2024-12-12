@@ -8,7 +8,7 @@ ROOT_HTML = "home.html"
 # Create your views here.
 
 def home_view(request):
-    data = requests.get(PRODUCTION_URL)
+    data = requests.get(LOCAL_URL)
     response = data.json()
 
     context = {'message': 'Hello, World', 'price': response['data']['price']}
