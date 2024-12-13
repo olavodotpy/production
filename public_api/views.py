@@ -16,8 +16,11 @@ class get_price(APIView):
     def get(self, request):
         
         data = requests.get(BINANCE_API)
+        response = data.json()
 
-        return Response(data.json())
+        context = {'price': response['price']}
+
+        return Response(context)
 
 
 
@@ -26,5 +29,11 @@ class get_about(APIView):
     def get(self, request):
 
         data = requests.get(COINGECKO_API)
+        response = data.json()
 
-        return Response(data.json())
+        context = {
+        "title": response['name'],
+        "body": response['description']['en'],
+        }
+
+        return Response(context)
