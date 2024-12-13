@@ -10,7 +10,7 @@ ABOUT_HTML = "about.html"
 
 
 def home_view(request):
-    data = requests.get(LOCAL_URL + "/api/consult/price")
+    data = requests.get(PRODUCTION_URL + "/api/consult/price")
     response = data.json()
 
     context = {'message': 'Hello, World', 'price': response['price']}
@@ -19,7 +19,7 @@ def home_view(request):
 
 
 def about_view(request):
-    data = requests.get(LOCAL_URL + "/api/consult/about")
+    data = requests.get(PRODUCTION_URL + "/api/consult/about")
     response = data.json()
 
     context = {
