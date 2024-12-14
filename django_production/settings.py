@@ -11,8 +11,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-
 import os
+import dotenv
+
+dotenv.load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-g3ijk#83rsqqp4z_(7y+#*zq2fg9+)*d)-=ys$1i3kjva0@5rb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG")
 
 ALLOWED_HOSTS = ['*']
 
@@ -131,41 +134,32 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Session
 
-# SESSION_ENGINE = "django.contrib.sessions.backends.db"
-
-# SESSION_COOKIE_HTTPONLY = False
-
-# SESSION_COOKIE_SAMESITE = 'Lax'
-
-
-# Caching
+# Caching By Memcache
 
 # Production
-
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',  # pylibmc
-#         'LOCATION': 'your-memcached-host:your-port',  
-#         'OPTIONS': {
-#         #     'username': 'your-username',  
-#         #     'password': 'your-password',  
-#         },
-#     }
-# }
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',  # pylibmc
+        'LOCATION': f'{os.getenv("MEMCACHE_PRIVATE_SERVER")}',  
+        'OPTIONS': {
+        #     'username': 'your-username',  
+        #     'password': 'your-password',  
+        },
+    }
+}
 
 
 # Localhost
-
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
-        'LOCATION': '127.0.0.1:11211',  # Default host for local Memcached
-    }
-}
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
+#         'LOCATION': '127.0.0.1:11211',  # Default host for local Memcached
+#     }
+# }

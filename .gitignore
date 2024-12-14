@@ -1,5 +1,5 @@
+.env
 src/
-.tool-versions
+/staticfiles
 *.sqlite3
 __pycache__/
-/staticfiles

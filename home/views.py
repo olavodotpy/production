@@ -1,21 +1,20 @@
 from django.shortcuts import render
 import requests
-
-PRODUCTION_URL = "https://production-production-8490.up.railway.app"
-LOCALHOST = "http://127.0.0.1:8000"
-ROOT_HTML = "home.html"
-ABOUT_HTML = "about.html"
+import os
+import dotenv
 
 # Create your views here.
 
+dotenv.load_dotenv()
+
 
 def home_view(request):
-    data = requests.get(LOCALHOST + "/api/consult/price")
+    data = requests.get(os.getenv("PRODUCTION_URL") + "/api/consult/price")
 
-    return render(request, ROOT_HTML, data.json())
+    return render(request, os.getenv("ROOT_HTML"), data.json())
 
 
 def about_view(request):
-    data = requests.get(LOCALHOST + "/api/consult/about")
+    data = requests.get(os.getenv("PRODUCTION_URL") + "/api/consult/about")
 
-    return render(request, ABOUT_HTML, data.json())
+    return render(request, os.getenv("ABOUT_HTML"), data.json())

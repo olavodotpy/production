@@ -2,20 +2,19 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 import requests
 from django.core.cache import cache
+import os
+import dotenv
 
 # Create your views here.
 
-BINANCE_API = "https://api.binance.us/api/v3/ticker/price?symbol=BTCUSDT"
-COINGECKO_API = "https://api.coingecko.com/api/v3/coins/bitcoin"
-
-
+dotenv.load_dotenv()
 
 
 class get_price(APIView):
     
     def get(self, request):
         
-        data = requests.get(BINANCE_API)
+        data = requests.get(os.getenv("BINANCE_API"))
         response = data.json()
 
         context = {'price': response['price']}
@@ -28,7 +27,7 @@ class get_about(APIView):
     
     def get(self, request):
 
-        data = requests.get(COINGECKO_API)
+        data = requests.get(os.getenv("COINGECKO_API"))
 
         data_cached = cache.get('DADOS_JSON')
 
