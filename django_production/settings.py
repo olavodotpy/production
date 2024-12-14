@@ -146,20 +146,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Production
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',  # pylibmc
-        'LOCATION': f'{os.getenv("MEMCACHE_PRIVATE_SERVER")}',  
-        'OPTIONS': {
-        #     'username': 'your-username',  
-        #     'password': 'your-password',  
-        },
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': f'{os.getenv("MEMCACHE_PRIVATE_SERVER")}',
     }
 }
-
 
 # Localhost
 # CACHES = {
 #     'default': {
-#         'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
-#         'LOCATION': '127.0.0.1:11211',  # Default host for local Memcached
+#         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+#         'LOCATION': '127.0.0.1:11211',   # Default host for local Memcached
 #     }
 # }
