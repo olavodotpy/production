@@ -147,9 +147,25 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Caching
 
+# Production
+
 # CACHES = {
 #     'default': {
-#         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-#         'LOCATION': 'redis://127.0.0.1:6379/1',
+#         'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',  # pylibmc
+#         'LOCATION': 'your-memcached-host:your-port',  
+#         'OPTIONS': {
+#         #     'username': 'your-username',  
+#         #     'password': 'your-password',  
+#         },
 #     }
 # }
+
+
+# Localhost
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
+        'LOCATION': '127.0.0.1:11211',  # Default host for local Memcached
+    }
+}

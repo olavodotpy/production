@@ -10,12 +10,12 @@ ABOUT_HTML = "about.html"
 
 
 def home_view(request):
-    data = requests.get(PRODUCTION_URL + "/api/consult/price")
+    data = requests.get(LOCALHOST + "/api/consult/price")
 
     return render(request, ROOT_HTML, data.json())
 
 
 def about_view(request):
-    data = requests.get(PRODUCTION_URL + "/api/consult/about")
+    data = requests.get(LOCALHOST + "/api/consult/about")
 
     return render(request, ABOUT_HTML, data.json())
