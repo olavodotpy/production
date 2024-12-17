@@ -7,14 +7,17 @@ import dotenv
 
 dotenv.load_dotenv()
 
+ROOT_HTML = "home.html"
+ABOUT_HTML = "about.html"
+
 
 def home_view(request):
     data = requests.get(os.getenv("PRODUCTION_URL") + "/api/consult/price")
 
-    return render(request, os.getenv("ROOT_HTML"), data.json())
+    return render(request, "ROOT_HTML", data.json())
 
 
 def about_view(request):
     data = requests.get(os.getenv("PRODUCTION_URL") + "/api/consult/about")
 
-    return render(request, os.getenv("ABOUT_HTML"), data.json())
+    return render(request, "ABOUT_HTML", data.json())
